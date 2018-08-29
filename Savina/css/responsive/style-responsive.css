@@ -1,0 +1,210 @@
+
+
+/*=========================================================
+	HEADER & FOOTER TEMPLATE
+===========================================================*/
+
+@media only screen and (max-width: 991px) {
+  #home .home-wrap {
+    margin-left: 0px;
+  }
+  #aside {
+    margin-bottom: 60px;
+  }
+  .product-reviews {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .banner h1 {
+    font-size: 36px;
+  }
+  .store-filter .pull-right, .store-filter .pull-left {
+    float: none !important;
+  }
+  .store-filter .pull-right {
+    margin-top: 15px;
+  }
+  .slidepanel_category {display:none;}
+  .dvHomeBGTitle {
+    width:100%;     
+    height: auto
+  }
+  .dvHomeBGTitle:before {display:none}
+  .section-title {border:none;}
+}
+
+@media only screen and (max-width: 480px) {
+  /* [class*='col-xs'] {
+    width: 100%;
+  } */
+}
+
+@media only screen and (max-width: 414px) {
+    .rowMobile {
+        width:100% !important;
+    }
+    .aside .aside-title {
+        width: 100% !important;
+    }
+    #price-slider {
+        width: 100% !important;
+    }
+    .listFilterCategory {
+        width: 100% !important;
+    }
+  .container {padding-left:10px !important; padding-right:10px !important;}
+
+  .header-search>form .search-input {width: 114%}
+  .header-search>form .search-btn-text {right: -10px;}
+  .header-search>form .search-btn-image {right: -40px;}
+  .header-search>form .search-categories {width: 124px;}
+  .header-account {width: 140px;}
+  .header-btns>li    { 
+    padding: 2px 0px;
+    font-size: 10px;
+  }
+  .header-btns>li .header-btns-icon 
+    {width: 32px;
+    height: 32px;
+  }
+  .mainbanner-height {height:auto;}
+
+  .slidepanel_category {display:none;}
+  .dvHomeBGTitle {
+    width:100%;     
+    height: auto
+  }
+  .dvHomeBGTitle:before {display:none}
+  .section-title {border:none;}
+  
+}
+
+@media only screen and (max-width: 375px) {
+  .header-search>form .search-input {width:103%;}
+  .header-search>form .search-btn-text {right: 15px;}
+  .header-search>form .search-btn-image {right: -13px;}
+}
+
+@media only screen and (max-width: 360px) {
+  .header-search>form .search-input {width:100%;}
+  .header-search>form .search-btn-text {right: 17px;}
+  .header-search>form .search-btn-image {right: -6px;}
+}
+
+/*=========================================================
+	HOME PAGE
+===========================================================*/
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+  #home-advpanel-right {display: none;}
+  .size-homeProductSlide {width: 100%;}
+}
+
+@media only screen and (max-width: 991px) {
+
+  #home-3banner-small {display: none;}
+  #home-3banner-large {display: none;}
+  #home-advpanel-right {display: none;}
+  .size-homeProductSlide {width: 100%;}
+
+}
+
+@media only screen and (max-width: 414px) {
+.dvHomeBGTitle.SPRaoVat {width:100%;}
+.dvHomeBGTitle.SPChoTang {width:100%;}
+.dvHome-ProductFrame {width:50%;}
+
+}
+/*=========================================================
+	PRODUCT DETAIL PAGES
+===========================================================*/
+
+@media only screen and (max-width: 991px) {
+  #home .home-wrap {
+    margin-left: 0px;
+  }
+  #aside {
+    margin-bottom: 60px;
+  }
+  .product-reviews {
+    margin-bottom: 30px;
+  }
+  .dvBriefDescription {width:100%}
+}
+
+@media only screen and (max-width: 767px) {
+  .banner h1 {
+    font-size: 36px;
+  }
+  .store-filter .pull-right, .store-filter .pull-left {
+    float: none !important;
+  }
+  .store-filter .pull-right {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* [class*='col-xs'] {
+    width: 100%;
+  } */
+}
+
+@media only screen and (max-width: 414px) {
+  .dvGhiChuDeposit {margin-top: 7px;}
+  .dvBookTime {height:130px}
+  .dvBookAccessory {height:287px}
+  .dvBookServices {height:175px}
+  .dvBookDelivery {height:175px}
+  .dvBookDeposit {height:80px; padding-top: 2px;}
+  .dvBookOtodes {height:48px; padding-top: 2px;}
+
+  .productDetail-lable-accessories {font-size:13px;}
+  .returntime-title {
+    padding-left: 100px;
+    padding-right: 60px;
+  }
+    .productdetail-totalvalue {margin-left:0px;}
+    .productdetail-totalpayment {margin-left:0px;}
+
+.pickuptime-form { width: 150px; margin-right: 31px !important; margin-bottom: 10px;}
+.returntime-form { width: 150px;}
+.dvOtoDescription {padding-top:3px;margin-top: -5px;}
+.dvServiceDescription {
+  width: 100% !important;
+  margin-left: 0px !important; 
+  margin-top: 33px !important;
+}
+
+.services-title-price {margin-left: 87px; margin-top:10px;}
+.delivery-title-price {margin-left: 87px !important; margin-top:10px;}
+.dvProductValue-OtoDes {width: 130px !important;; margin-left: 4px;}
+.dvProductValue-Total {    margin-left: 2%;height: 35px;}
+.dvPriceTamTinh-Total {    margin-left: 2%;}
+.dvPriceTamTinh-Services {margin-left: 79px;margin-top: 4px;}
+.dvPriceTamTinh-Delivery {margin-left: 79px;margin-top: 4px;}
+
+.BookAccessories-productName {margin-top: 15px;}
+.productStatus  {margin-top: 8px;}
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (max-width: 360px) {
+
+  .dvPriceTamTinh {margin-left: 25px !important; width: 115px;   }
+  .dvProductValue-OtoDes p {font-size:15px}
+  .dvProductValue {width: 115px;margin-left: 23px !important;}
+  .dvProductValue-OtoDes {width: 116px !important;}
+  .dvBookOtodes {    height: 65px;}
+  .dvProductValue-Total {width:117px !important;}
+  .dvProductValue-Total p {font-size:17px !important}
+.dvPriceTamTinh-Total P {font-size:17px !important}
+.dvPriceTamTinh-Services {margin-left:85px !important;}
+.dvPriceTamTinh-Delivery {margin-left:85px !important;}
+
+
+}

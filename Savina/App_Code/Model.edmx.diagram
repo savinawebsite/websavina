@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="562d8ead22974658a02982bc81d170a2" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="savinaModel.tb_About" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Access" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_CategoryMain" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_CategorySub1" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_CategorySub2" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_CategorySub3" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ContactUs" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Counteronline" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Country" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Customer" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_DeliverySelection" Width="1.625" PointX="2.625" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_District" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_DocumentSelection" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_HomeBanner" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_HomeMainBanner" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_HomeProductGroup" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_LocalAccount" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Order" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_OrderAccessorySelection" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_OrderTrackingUpdate" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Permission" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Product" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ProductAccessorySelection" Width="1.5" PointX="6.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ProductAccompany" Width="1.5" PointX="8.125" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ProductGallery" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ProductHomeProductGroup" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Promotion" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Province" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ServiceSelection" Width="1.5" PointX="15.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_SiteMap" Width="1.5" PointX="15.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_Ward" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_WishList" Width="1.5" PointX="12.25" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="savinaModel.FK_Province_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="savinaModel.FK_District_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="savinaModel.FK_Ward_District" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="savinaModel.tb_GetLinkImage" Width="1.5" PointX="16.375" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_GroupCustomer" Width="1.5" PointX="3.625" PointY="16.5" />
+        <EntityTypeShape EntityType="savinaModel.tb_ContactMessage" Width="1.5" PointX="0.75" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
