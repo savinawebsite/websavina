@@ -1,0 +1,793 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="FrontSite.master.cs" Inherits="Savina.FrontSite" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>SAVINA website - Tools Rental website</title>
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet"/>
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/responsive/style-responsive.css" />
+    <link type="text/css" rel="stylesheet" href="css/extension-style.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.css" />  
+    <!-- process login modal -->
+    <script type="text/javascript" src="../js/process-login-master.js"></script>
+
+    <style>
+        .dvCusLogin {
+            display:none;
+        }
+        .dvCusInfoShow {
+            display:none;
+        }
+        .form-errors {
+            display:none;
+        }
+    </style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+   <%-- <form id="form1" runat="server">--%>
+    <form id="masterform" runat="server">
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal">
+        <div class="modal-dialog modal-dialog-centered " style="left:0%">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+                <div class="modal-header">         
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">SAVINA WEBSITE</h4>
+            </div>   
+                      
+                <div class="content-tab-login" style="display: block">  <!-- tab login -->
+                    <div class="content-top">
+                        <div class="fb_wrap">
+                            <a href="https://www.thailand-property.com/auth/facebook" class="signup-button facebook-signup" rel="nofollow">
+                                <span class="icon"><i class="fa fa-facebook"></i></span>
+                                <span class="text">Đăng nhập với Facebook</span>
+                            </a>
+                        </div>
+                        <div class="g_wrap">
+                            <a href="https://www.thailand-property.com/auth/google" class="signup-button google-signup" rel="nofollow">
+                                <span class="icon"><img src="https://www.thailand-property.com/img/g-logo.png" alt="Google+"/></span>
+                                <span class="text">Đăng nhập với Google</span>
+                            </a>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="ors">
+                            <div class="ellipse-or">or</div>
+                        </div>
+                        <div id="loginPopupForm">
+                                <div class="form-errors" id="formerrors" runat="server">
+                                    <p id="loginNotification" runat="server"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Nhập Email" class="form-control inputEmail" id="ipCustomerEmail" name="ipCustomerEmail" runat="server"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Nhập Password" class="form-control inputPassword" id="ipCustomerPassword" name="ipCustomerPassword" runat="server"/>
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox text-left">
+                                        <label>
+                                            <input type="checkbox" name="remember"/> Ghi nhớ tôi
+                                        </label>
+                                        <span class="right"><a href="../login/forgotten" id="forgotpassBtn">Quên mật khẩu?</a></span>
+                                    </div>
+                                </div>
+                           
+                                <div class="form-group text-center">
+                                    <%--<button id="btnLoginNow" onclick="btnLoginNowClick()" type="submit" class="btn btn-primary">--%>
+                                    <%--<button id="btnLoginNow" type="submit" class="btn btn-primary">Đăng nhập ngay</button>--%>
+                                    <asp:Button ID="loginButton" runat="server" CssClass="btn btn-primary" Text="Đăng nhập ngay" OnClick="btnLoginUser" />  
+                                </div>
+                        </div>    
+                        <div class="hr"></div>
+                        <div class="content-footer">
+                            Bạn chưa có tài khoản?  <a id="callRegisterBtn" onclick="callRegisterBtn()" class="btn btn-white-orange txt-orange right">Sign up</a>
+                            <div class="clearfix"></div>
+                        </div>       
+                     </div>         
+                </div> <!-- /tab login --> 
+              
+                <div class="content-tab-register-social" style="display: none;">  <!-- tab register with social -->  
+                    <div class="content-top">
+                        <div class="fb_wrap">
+                            <a href="https://www.thailand-property.com/auth/facebook" class="signup-button facebook-signup" rel="nofollow">
+                                <span class="icon"><i class="fa fa-facebook"></i></span>
+                                <span class="text">Tiếp tục với Facebook</span>
+                            </a>
+                        </div>
+                                        <div class="g_wrap">
+                            <a href="https://www.thailand-property.com/auth/google" class="signup-button google-signup" rel="nofollow">
+                                <span class="icon"><img src="https://www.thailand-property.com/img/g-logo.png" alt="Google+"/></span>
+                                <span class="text">Tiếp tục với Google</span>
+                            </a>
+                        </div>
+                                        <div class="hr"></div>
+                                        <div class="ors">
+                            <div class="ellipse-or">or</div>
+                        </div>
+                        <div class="email_wrap">
+                            <a class="signup-button email-signup" onclick="registerwithemail()">
+                                <span class="icon"><i class="fa fa-envelope-o"></i></span>
+                                <span class="text">Tạo tài khoản với Email</span>
+                            </a>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="txt-left">
+                                <small>Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../privacy" class="txt-orange">Chính sách bảo mật</a> của Savina<br>
+                                    Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../terms" class="txt-orange">các điều khoản</a> của Savina</small>
+                            </label>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="content-footer">
+                            Bạn đã có tài khoản rồi?  <a id="callLoginBtn" onclick="callLoginBtn()" class="btn btn-white-orange txt-orange right">Log in</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>    <!-- /tab register with social --> 
+
+                <div class="content-tab-register" style="display: none;">  <!--register with Email-->
+                    <div class="content-top">
+                        <form accept-charset="UTF-8" id="registerPopupForm">
+     
+                            <div class="form-group center">
+                                <span>Đăng ký tài khoản với email</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control registeraccform" id="ipregFirstname" name="ipregFirstname" placeholder="Nhập tên *" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control registeraccform" id="ipregLastname" name="ipregLastname" placeholder="Nhập họ *" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control registeraccform" id="ipregCusEmail" name="ipregCusEmail" placeholder="Nhập Email *"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control registeraccform" id="ipregCusPassword" name="ipregCusPassword" placeholder="Nhập mật khẩu *"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control registeraccform" id="ipregCusPasswordCon"  name="ipregCusPasswordCon" placeholder="Xác nhận mật khẩu *"/>
+                            </div>
+                             <!--  -->
+                            <div class="form-group">
+                                <label class="txt-left">
+                                    <small>Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../privacy" class="txt-orange">Chính sách bảo mật</a> của Savina<br>
+                                        Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../terms" class="txt-orange">các điều khoản</a> của Savina</small>
+                                </label>
+                            </div>
+
+                             <input name="refer_type" type="hidden" value="login"/>
+                             <div class="form-group text-center">
+                                <%--<button id="btnRegister" onclick="btnRegisterClick()" type="submit" class="btn btn-primary">Đăng ký ngay</button>--%>
+                                 <button id="btnRegister" type="submit" class="btn btn-primary">Đăng ký ngay</button> 
+                            </div>
+                        </form>
+                        <div class="hr"></div>
+                        <div class="content-footer">
+                            Bạn đã có tài khoản rồi?  <a id="callLoginBt" onclick="callLoginBtn()" class="btn btn-white-orange txt-orange right">Log in</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>  <!--/register with Email-->
+              
+            </div>
+        </div>
+    </div>
+    <!--End Login Modal -->
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerDialog" role="dialog">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">           
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center;">SAVINA</h4>
+                </div>            
+                <div class="modal-body">
+                </div>               
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                                
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Register Modal -->
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginDialog" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" style="left: 25px;">
+            <div class="modal-content">           
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center;">SAVINA</h4>
+                </div>            
+                <div class="modal-body">
+                </div>               
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>     
+                    <%--<asp:Button ID="Button1" runat="server" CssClass="btn btn-danger btn-ok" Text="Đồng ý" OnClick="btnLoginUser" />  --%>                     
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Login Modal -->
+
+    <!-- Header, top header -->
+	<header>
+        <div id="top-header">
+	        <div class="container">
+			        <div class="pull-left">
+				        <span>Welcome to Savina - Tools Rental !</span>
+			        </div>
+			        <div class="pull-right">
+				        <ul class="header-top-links">
+					        <li><a href="#">Điều khoản</a></li>
+					        <li><a href="#"><img src="/img/flag-VN.jpg"></a></li>
+					        <li><a href="#"><img src="/img/flag-US.jpg" style="filter: grayscale(90%);"></a></li>
+					        <!-- <li><a href="#" style="display: inline;">Ngôn ngữ</a></li><span>VND</span><span>USD</span> -->
+					        <!-- <li class="dropdown default-dropdown">
+						        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Ngôn ngữ <i class="fa fa-caret-down"></i></a>
+						        <ul class="custom-menu">
+							        <li><a href="#">English (ENG)</a></li>
+							        <li><a href="#">Vietnamese (VN)</a></li>
+						        </ul>
+					        </li> -->
+					        <li class="dropdown default-dropdown">
+						        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Ngoại tệ <i class="fa fa-caret-down"></i></a>
+						        <ul class="custom-menu" style="width: 290px;line-height: 26px;" >
+							        <li><a href="#" style="display: inline; font-weight:600">USD </a><span>&nbsp (tỉ giá cập nhật theo ngân hàng ACB)</span></li>
+							        <li><a href="#" style="display: inline; font-weight:600">VND </a><span>&nbsp (tỉ giá cập nhật theo ngân hàng ACB)</span></li>
+						        </ul>
+					        </li>
+				        </ul>
+			        </div>
+		        </div>
+	        </div>
+
+    <div id="header">
+		<div class="container">
+			<div class="pull-left">
+				<!-- Logo -->
+				<div class="header-logo">
+					<a class="logo" href="http://savinaweb.siyosa.net">
+						<img src="./img/SiYoSa-Logo.png" alt="">
+					</a>
+				</div>
+				<!-- /Logo -->
+
+				<!-- Search -->
+				<div class="header-search">
+					<form>
+						<input class="input search-input" type="text" placeholder="Enter your keyword"/>
+						<select class="input search-categories">
+							<option value="0">Theo khu vực</option>
+							<option value="1">Theo giá</option>
+							<option value="2">Theo hàng mới</option>
+							<option value="3">Theo % sử dụng</option>
+						</select>
+						<button class="search-btn-text"><i class="fa fa-search"></i></button>
+						<button class="search-btn-image"><i class="fa fa-camera"></i></button>
+					</form>
+				</div>
+				<!-- /Search -->
+			</div>           
+			    <div class="pull-right">
+				<ul class="header-btns">
+					<!-- Mobile nav toggle-->
+					<li class="nav-toggle">
+							<button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+						</li>
+						<!-- / Mobile nav toggle -->
+						
+					<!-- Account -->                   
+					<li class="header-account dropdown default-dropdown">
+						<div class="dvCusInfoShow" id="dvCusInfoShow" runat="server" role="button" data-toggle="dropdown" aria-expanded="true">
+							<div class="header-btns-icon">
+								<i class="fa fa-user-o"></i>
+							</div>
+							<p class="text-uppercase" id="cusNameLogIn" runat="server">...</p>
+
+						</div>
+                        <ul class="custom-menu">
+							<li><a href="/user_profile"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
+							<li><a href="/user_profile"><i class="fa fa-heart-o"></i> My Wishlist</a></li>	
+                            <li><i class="fa fa-user-o"></i><asp:LinkButton style="display: inline-block;" id="logoutButton" Text="Đăng xuất" OnClick="btnLogOutUser" runat="server"/></li>												
+						</ul>
+                        <div class="dvCusLogin" id="dvCusLogin" runat="server">
+							<div class="header-btns-icon">
+								<i class="fa fa-user-o"></i>
+							</div>
+							<a href="#" onclick="openModalLoginForm()" class="text-uppercase">Login</a> / <a href="#" onclick="openModalRegister()" class="text-uppercase">Register</a>
+						</div>												
+					</li>
+                    
+					<!-- /Account -->
+
+					<!-- Cart -->
+					<li class="header-cart dropdown default-dropdown">
+						<a class="dropdown-toggle" onclick="viewCart()">
+							<div class="header-btns-icon">
+								<i class="fa fa-shopping-cart"></i>
+								<span class="qty">3</span>
+							</div>
+							<strong class="text-uppercase">Giỏ hàng:</strong>
+					
+						</a>
+						<div class="custom-menu">
+							<div id="shopping-cart">
+								<div class="shopping-cart-list">
+									<div class="product product-widget">
+										<div class="product-thumb">
+											<img src="./img/thumb-product01.jpg" alt=""/>
+										</div>
+										<div class="product-body">
+											<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
+											<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										</div>
+										<button class="cancel-btn"><i class="fa fa-trash"></i></button>
+									</div>
+									<div class="product product-widget">
+										<div class="product-thumb">
+											<img src="./img/thumb-product01.jpg" alt="">
+										</div>
+										<div class="product-body">
+											<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
+											<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										</div>
+										<button class="cancel-btn"><i class="fa fa-trash"></i></button>
+									</div>
+								</div>
+								<div class="shopping-cart-btns">
+									<button class="main-btn">View Cart</button>
+									<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- /Cart -->					
+				</ul>
+			</div>           
+		</div>
+		<!-- header -->
+	</div>
+</header>
+    <!-- Header, top header -->
+
+    <!-- Horizontal menu bar -->
+    <div id="navigation">   
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- category nav -->
+				<div class="category-nav show-on-click">
+					<span class="category-header">Categories <i class="fa fa-list"></i></span>
+					<ul class="category-list" id="ulMainCateList" runat="server">
+
+					</ul>
+				</div>
+				<!-- /category nav -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list">
+						<li><a href="http://savinaweb.siyosa.net">Home</a></li>
+						<li><a href="../about_us">About Us</a></li>
+						<li><a href="#">Blog News</a></li>
+						<li><a href="../productsearch">Refine Search</a></li>
+						<li><a href="../contact_us">Contact Us</a></li>						
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>  
+    <!-- /Horizontal menu bar -->
+
+    <!-- MainContent template here -->
+        <asp:ContentPlaceHolder id="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    <!-- /MainContent template here -->
+
+  	<!-- FOOTER -->
+	<footer id="footer" class="section section-grey">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- footer widget -->
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="footer">
+						<!-- footer logo -->
+						<!-- <div class="footer-logo">
+							<a class="logo" href="#">
+		            			<img src="./img/SiYoSa-Logo.png" alt="">
+		          			</a>
+						</div> -->
+						<h3 class="footer-header" style="text-transform:lowercase">Copyright © 2018 Savina.siyosa.net</h3>
+						<!-- /footer logo -->
+
+						<p>Số ĐKKD: 0312776486 - Ngày cấp: 13/05/2014, được sửa đổi lần thứ 6, ngày 23/05/2016. </p>
+						<p>	Cơ quan cấp: Sở Kế hoạch và Đầu tư TPHCM.</p>
+						<p>	Địa chỉ: Tòa nhà Nam Anh, số 41, Đường 41, Phường Thảo Điền, Quận 2, Tp.HCM.</p>
+						<p>	Email: <u>lienhe@savina.com</u> </p>
+						
+
+						<!-- footer social -->
+						<ul class="footer-social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						</ul>
+						<!-- /footer social -->
+					</div>
+				</div>
+				<!-- /footer widget -->
+
+				<!-- footer widget -->
+				<div class="col-md-2 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">HỖ TRỢ KHÁCH HÀNG</h3>
+						<ul class="list-links">
+							<li><a href="#">Trung tâm trợ giúp</a></li>
+							<li><a href="#">An toàn mua bán</a></li>
+							<li><a href="#">Quy định cần biết</a></li>
+							<li><a href="#">Liên hệ hỗ trợ</a></li>
+							<li><a href="#">Login</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /footer widget -->
+
+				<div class="clearfix visible-sm visible-xs"></div>
+
+				<!-- footer widget -->
+				<div class="col-md-2 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">VỀ CHÚNG TÔI</h3>
+						<ul class="list-links">
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Quy chế hoạt động</a></li>
+							<li><a href="#">Chính sách bán hàng</a></li>
+							<li><a href="#">Hệ thống kiểm định</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /footer widget -->
+
+				<!-- footer subscribe -->
+				<div class="col-md-2 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">ĐĂNG KÝ NHẬN TIN KHUYẾN MÃI</h3>
+						<p>Thông tin của bạn sẽ được bảo mật tuyệt đối và bạn có thể hủy đăng ký bất cứ lúc nào..</p>
+					
+							<div class="form-group">
+								<input class="input" placeholder="Enter Email Address"/>
+							</div>
+							<button class="primary-btn">ĐĂNG KÝ</button>
+
+					</div>
+				</div>
+				<!-- /footer subscribe -->
+			</div>
+			<!-- /row -->
+			<hr>
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | 2018
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</div>
+					<!-- /footer copyright -->
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</footer>
+	<!-- /FOOTER -->
+
+    
+
+    <!-- Load menu navigation -->
+    <script type="text/javascript"> 
+    $( document ).ready(function() {
+        getCategoryList();
+    });
+
+    function getCategoryList() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                if (xmlhttp.responseText != "error") {
+                    $('#ulMainCateList').html(xmlhttp.responseText);
+                }
+            }
+        }
+        xmlhttp.open("GET", "../Ajax.aspx?action=getCategoryList", true);
+        xmlhttp.send();
+    }
+</script>
+    <!-- /Load menu navigation -->
+
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            //register account by xmlhttp
+            $('#btnRegister').click(function (event) {
+                var regFirstName = $('#ipregFirstname').val()
+                var regLastName = $('#ipregLastname').val()
+                var regEmail = $("#ipregCusEmail").val()
+                var regPassword = $("#ipregCusPassword").val()
+                var regPasswordCon = $("#ipregCusPasswordCon").val()
+                if (regFirstName=="" && regLastName=="" && regEmail=="" && regPassword=="" && regPasswordCon=="" ) 
+                {
+                    $(".modal-body").html("Vui lòng nhập đầy đủ thông tin đăng ký");
+                    $("#registerDialog").modal();
+                    $('#ipregFirstname').css('background', 'antiquewhite');
+                    $('#ipregLastname').css('background', 'antiquewhite');
+                    $('#ipregCusEmail').css('background', 'antiquewhite');
+                    $('#ipregCusPassword').css('background', 'antiquewhite');
+                    $('#ipregCusPasswordCon').css('background', 'antiquewhite');
+                    return false;
+                }
+                else {
+                    if (regFirstName == "") {
+                        $(".modal-body").html("Vui lòng nhập Tên");
+                        $("#registerDialog").modal();
+                        $('#ipregFirstname').css('background', 'antiquewhite');
+                        $('#ipregLastname').css('background', 'none');
+                        $('#ipregCusEmail').css('background', 'none');
+                        $('#ipregCusPassword').css('background', 'none');
+                        $('#ipregCusPasswordCon').css('background', 'none');
+                        return false;
+                    }
+                    if (regLastName == "") {
+                        $(".modal-body").html("Vui lòng nhập Họ");
+                        $("#registerDialog").modal();
+                        $('#ipregFirstname').css('background', 'none');
+                        $('#ipregLastname').css('background', 'antiquewhite');
+                        $('#ipregCusEmail').css('background', 'none');
+                        $('#ipregCusPassword').css('background', 'none');
+                        $('#ipregCusPasswordCon').css('background', 'none');
+                        return false;
+                    }
+                    if (regEmail == "") {
+                        $(".modal-body").html("Vui lòng nhập Email");
+                        $("#registerDialog").modal();
+                        $('#ipregFirstname').css('background', 'none');
+                        $('#ipregLastname').css('background', 'none');
+                        $('#ipregCusEmail').css('background', 'antiquewhite');
+                        $('#ipregCusPassword').css('background', 'none');
+                        $('#ipregCusPasswordCon').css('background', 'none');
+                        return false;
+                    }
+                    if (regPassword == "") {
+                        $(".modal-body").html("Vui lòng nhập Mật khẩu");
+                        $("#registerDialog").modal();
+                        $('#ipregFirstname').css('background', 'none');
+                        $('#ipregLastname').css('background', 'none');
+                        $('#ipregCusEmail').css('background', 'none');
+                        $('#ipregCusPassword').css('background', 'antiquewhite');
+                        $('#ipregCusPasswordCon').css('background', 'none');
+                        return false;
+                    }
+                    if (regPasswordCon == "") {
+                        $(".modal-body").html("Vui lòng nhập Mật khẩu xác nhận");
+                        $("#registerDialog").modal();
+                        $('#ipregFirstname').css('background', 'none');
+                        $('#ipregLastname').css('background', 'none');
+                        $('#ipregCusEmail').css('background', 'none');
+                        $('#ipregCusPassword').css('background', 'none');
+                        $('#ipregCusPasswordCon').css('background', 'antiquewhite');
+                        return false;
+                    }
+                    if (regPasswordCon != regPassword) {
+                        $(".modal-body").html("Mật khẩu xác nhận không khớp, vui lòng nhập lại");
+                        $("#registerDialog").modal();
+                        return false;
+                    }
+                    else {
+                        //process login
+                        var xmlhttp;
+                        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                            xmlhttp = new XMLHttpRequest();
+                        }
+                        else {// code for IE6, IE5
+                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xmlhttp.onreadystatechange = function () {
+                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                if (xmlhttp.responseText != "error") {
+                                    //create success
+                                    $(".modal-body").html("Đăng ký tài khoản mới thành công, vui lòng đăng nhập với thông tin vừa khởi tạo");
+                                    $("#registerDialog").modal();
+                                    location.reload();
+                                }
+                            }
+                        }
+                        xmlhttp.open("GET", "../Ajax.aspx?action=Registernew&regFirstName=" + regFirstName + "&regLastName=" + regLastName + "&regEmail=" + regEmail + "&regPassword=" + regPassword + "&regPasswordCon=" + regPasswordCon + "", true);
+                        xmlhttp.send();
+                    }
+               }
+                
+            });
+
+            //login from code behind
+            $('#btnLoginNow').click(function (event) {
+                var cusEmail = $('#ipCustomerEmail').val()
+                var cusPass = $("#ipCustomerPassword").val()
+                if (cusEmail == "" && cusPass == "") {
+                    $(".modal-body").html("Vui lòng nhập vào email và mật khẩu");
+                    $("#registerDialog").modal();
+                    $('#ipCustomerEmail').css('background', 'antiquewhite');
+                    $('#ipCustomerPassword').css('background', 'antiquewhite');
+                    return false;
+                }
+                else {
+                    if (cusEmail == "") {
+                        $(".modal-body").html("Vui lòng nhập vào email");
+                        $("#registerDialog").modal();
+                        $('#ipCustomerEmail').css('background', 'antiquewhite');
+                        $('#ipCustomerPassword').css('background', 'none');
+                        return false;
+                    }
+                    if (cusPass == "") {
+                        $(".modal-body").html("Vui lòng nhập vào mật khẩu");
+                        $("#registerDialog").modal();
+                        $('#ipCustomerEmail').css('background', 'none');
+                        $('#ipCustomerPassword').css('background', 'antiquewhite');
+                        return false;
+                    }
+                }
+                if (cusEmail != "" && cusPass != "") {
+                    $(".modal-body").html("Hệ thống sẽ đăng nhập với TK" + cusEmail + " :");
+                    $("#loginDialog").modal();
+                }
+            });
+
+
+            //login by xmlhttp (stop using)
+
+            //$('#btnLoginNow').click(function (event) {
+            //    var cusEmail = $('#ipCustomerEmail').val()
+            //    var cusPass = $("#ipCustomerPassword").val()
+            //    if (cusEmail == "" && cusPass == "") {
+            //        $(".modal-body").html("Vui lòng nhập vào email và mật khẩu");
+            //        $("#registerDialog").modal();
+            //        $('#ipCustomerEmail').css('background', 'antiquewhite');
+            //        $('#ipCustomerPassword').css('background', 'antiquewhite');
+            //        return false;
+            //    }
+            //    else {
+            //        if (cusEmail == "") {
+            //            $(".modal-body").html("Vui lòng nhập vào email");
+            //            $("#registerDialog").modal();
+            //            $('#ipCustomerEmail').css('background', 'antiquewhite');
+            //            $('#ipCustomerPassword').css('background', 'none');
+            //            return false;
+            //        }
+            //        if (cusPass == "") {
+            //            $(".modal-body").html("Vui lòng nhập vào mật khẩu");
+            //            $("#registerDialog").modal();
+            //            $('#ipCustomerEmail').css('background', 'none');
+            //            $('#ipCustomerPassword').css('background', 'antiquewhite');
+            //            return false;
+            //        }
+            //    }
+            //    if (cusEmail != "" && cusPass != "") {
+            //        //process login
+            //        var xmlhttp;
+            //        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            //            xmlhttp = new XMLHttpRequest();
+            //        }
+            //        else {// code for IE6, IE5
+            //            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            //        }
+            //        xmlhttp.onreadystatechange = function () {
+            //            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            //                if (xmlhttp.responseText != "") {
+            //                    if (xmlhttp.responseText == "1") {
+            //                        //login success
+            //                        $(".modal-body").html("Đăng nhập thành công");
+            //                        $("#registerDialog").modal();
+            //                        //location.reload();
+            //                        loadCusLogginName();
+            //                    }
+            //                    if (xmlhttp.responseTextt == "2") {
+            //                        //wrong password
+            //                        $(".modal-body").html("Mật khẩu không đúng, vui lòng thử lại");
+            //                        $("#registerDialog").modal();
+            //                        return false;
+            //                    }
+            //                    if (xmlhttp.responseText == "error") {
+            //                        //email not exist
+            //                        $(".modal-body").html("Tài khoản không tồn tại");
+            //                        $("#registerDialog").modal();
+            //                        return false;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        var safeemail = escape(cusEmail);
+            //        var safepass = escape(cusPass);
+            //        xmlhttp.open("GET", "../Ajax.aspx?action=LoginNow&cusEmail=" + cusEmail + "&cusPass=" + cusPass + "", true);
+            //        xmlhttp.send();
+            //    }              
+            //});
+
+            //login by xmlhttp (stop using)
+
+        });
+    </script>
+
+
+    <!-- jQuery Plugins -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/jquery.zoom.min.js"></script>
+	<script src="js/main.js"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $('.product-slick').slick({
+			infinite: true,
+			slidesToShow: 4,
+			slidesToScroll: 4,
+			rows: 2,
+			dots: true,
+			arrows: true,
+		  });
+		});
+	  </script>
+
+        <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'f5fedb81-3341-4ccb-b7cd-5e7eecdc4db7', f: true }); done = true; } }; })();</script>
+
+    </form>
+</body>
+</html>
