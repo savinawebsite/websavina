@@ -1,0 +1,259 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="adTemplate.master.cs" Inherits="backend_adTemplate" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Savina Website | Admin page</title>
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap -->   
+    <link href="../backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="../backend/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <!-- NProgress -->
+    <link href="../backend/vendors/nprogress/nprogress.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="../backend/vendors/iCheck/skins/flat/green.css" rel="stylesheet"/>
+    <!-- Datatables -->
+    <link href="../backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+    <link href="../backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet"/>
+    <link href="../backend/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet"/>
+    <link href="../backend/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet"/>
+    <link href="../backend/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet"/>
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../backend/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../backend/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../backend/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="../backend/build/css/custom.min.css" rel="stylesheet"/>
+    <link href="../backend/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+     <link href="../backend/css/adTemplate.css" rel="stylesheet" />
+    <link  href="../backend/dist/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- tinymce editor -->
+    <script src="../tinymce/js/tinymce/tinymce.min.js"></script>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- left navigation sidebar menu -->
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="glyphicon glyphicon-home"></i> <span>Savina Website</span></a>
+          </div>
+        
+          <div class="clearfix"></div>
+        
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+            <img src="../img/SiYoSa-Logo-notext.png" alt="..." class="img-circle profile_img"/>
+            </div>
+            <div class="profile_info">
+            <span>Welcome,</span>
+            <h2>Admin Savina</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+        
+          <br />
+        
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="index.html">Thống kê tổng hợp</a></li>
+                <li><a href="login.html">Login</a></li>
+              </ul>
+              </li>
+              <li><a><i class="fa fa-list"></i> Quản lý Category <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="category_main">Category Main</a></li>
+                <li><a href="category_sub1">Category Sub 1</a></li>
+                <li><a href="category_sub2">Category Sub 2</a></li>
+                <%--<li><a href="category_sub3">Category Sub 3</a></li>--%>
+              </ul>
+              </li>
+                <li><a href="Sitemap_management"><i class="fa fa-list"></i> Quản lý Sitemap </a></li>
+              <li><a><i class="fa fa-cubes"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="product_createnew">Tạo sản phẩm</a></li>
+                <li><a href="product_list">Danh sách sản phẩm</a></li>
+              </ul>
+              </li>
+              <li><a><i class="fa fa-suitcase"></i> Quản lý đơn hàng <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="order_createnew">Tạo đơn hàng</a></li>
+                <li><a href="order_list">Danh sách đơn hàng</a></li>
+              </ul>
+              </li>
+              <li><a><i class="fa fa-users"></i> Quản lý khách hàng <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="customer_group">Nhóm khách hàng</a></li>
+                <li><a href="customer_list">Danh sách khách hàng</a></li>
+                <li><a href="customer_createnew">Tạo khách hàng mới</a></li>
+              </ul>
+              </li>
+              <li><a><i class="fa fa-file-image-o"></i> Quản lý các banner <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="home_slider_management">Main slider trang Homepage</a></li>
+                <li><a href="banner_management">Các banner quảng cáo</a></li>
+                  <li><a href="banner_mainCategory">Các banner của maincategory</a></li>
+              </ul>
+              </li>
+              <li><a><i class="fa fa-envelope-o"></i> Quản lý tin nhắn  <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="message_contact">Tin nhắn từ Contact</a></li>
+                <li><a href="message_chat">Tin nhắn từ CHAT</a></li>
+                <li><a href="message_other">Tin nhắn khác</a></li>
+              </ul>
+              </li>
+              <li><a><i class="fa fa-cogs"></i>Quản lý hệ thống <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="account_group">Tạo nhóm TK local</a></li>
+                <li><a href="account_createnew">Tạo TK backend local</a></li>
+                <li><a href="tracklogs">Tracking logs</a></li>
+                <li><a href="get_link">Get link image</a></li>
+                <li><a href="seo_management">Quản lý SEO</a></li>
+              </ul>
+              </li>
+            </ul>
+            </div>
+          </div>
+          <!-- /sidebar menu -->
+        
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+          </div>
+        </div> 
+         <!-- /left navigation sidebar menu -->
+
+         <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a style="width:200px;" href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <div id="userAdAvatar" runat="server" style="display:inline;"><img src="images/img.jpg" alt=""></div> <p style="display:inline;" id="userAdWelcome" runat="server"></p>
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="javascript:;">Giúp đỡ</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+         <!-- /top navigation -->
+
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Savina - Bootstrap Admin Backend by <a href="http://siyosa.net">Siyosa Co., Ltd</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+
+    <!-- Modal Alert -->
+  <div class="modal fade" id="alertDialog" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center;">SAVINA</h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    <!-- /Modal Alert -->
+      
+    </div>
+  </div>
+
+      </div>
+    </div>
+     
+    <!-- jQuery -->
+    <script src="../backend/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../backend/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../backend/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../backend/vendors/iCheck/icheck.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="../backend/build/js/custom.min.js"></script>
+
+    <script src="../backend/js/bootstrap-select.js"></script>
+
+    <!-- Datatables -->
+    <script src="../backend/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../backend/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../backend/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../backend/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../backend/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../backend/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../backend/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../backend/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../backend/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../backend/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+</body>
+
+</html>
